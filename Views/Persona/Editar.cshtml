@@ -1,4 +1,5 @@
-﻿@model MVCCrud.Models.ViewModel.TablaViewModel
+﻿@using System.Web.Optimization
+@model MVCCrud.Models.ViewModel.TablaViewModel
 @{
     ViewBag.Title = "Nuevo";
 }
@@ -9,24 +10,25 @@
 {
     <div>
         <div class="col-md-12">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(d => d.Id)
             <div>
                 @Html.LabelFor(d => d.Nombre)
                 @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(d => d.Nombre, null, new { @class = "danger" })
+                @Html.ValidationMessageFor(d => d.Nombre, null, new { @class = "text-danger" })
             </div>
 
             <div>
                 @Html.LabelFor(d => d.Correo)
                 @Html.TextBoxFor(d => d.Correo, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(d => d.Correo, null, new { @class = "danger" })
+                @Html.ValidationMessageFor(d => d.Correo, null, new { @class = "text-danger" })
             </div>
 
             <div>
                 <br />
                 @Html.LabelFor(d => d.Fecha_Nacimiento)<br />
                 @Html.EditorFor(d => d.Fecha_Nacimiento, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(d => d.Fecha_Nacimiento, null, new { @class = "danger" })
+                @Html.ValidationMessageFor(d => d.Fecha_Nacimiento, null, new { @class = "text-danger" })
             </div>
 
             <div style="text-align:right;">
@@ -36,3 +38,7 @@
     </div>
 }
 
+@section Scripts{
+    @Scripts.Render("~/bundles/respond")
+    @Scripts.Render("~/bundles/jqueryval")
+}
